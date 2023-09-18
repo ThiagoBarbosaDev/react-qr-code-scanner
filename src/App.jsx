@@ -14,7 +14,7 @@ function ViewFinder() {
       justifyContent="space-between"
       position="absolute"
       zIndex="999"
-      padding="5em"
+      padding="10%"
     >
       <Flex justifyContent="space-between">
         <Box
@@ -74,7 +74,8 @@ function WebCam(props) {
             onResult={onResult}
             containerStyle={{
               zIndex: 0,
-              width: '550px',
+              width: '100vw',
+              maxWidth: '500px',
             }}
             scanDelay={1000}
           />
@@ -88,11 +89,14 @@ function App() {
   const [qrCode, setQrCode] = useState('');
   return (
     <Flex h="100vh" direction="column">
-      <Center fontSize="3rem" margin="auto">
+      <Center fontSize="3rem" margin="auto" textAlign="center" padding="1em">
         <h1>QR Code Scanner</h1>
       </Center>
       <WebCam setQrCode={setQrCode} />
-      <Box margin="auto">{`seu QR Code: ${qrCode}`}</Box>
+      <Box margin="auto" fontSize="2rem">
+        <div>seu QR Code:</div>
+        { qrCode && <div>{qrCode}</div> }
+      </Box>
     </Flex>
   );
 }
